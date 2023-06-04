@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\UpdateRequest;
 use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\Product;
 use App\Models\Purchase;
 
 class UpdateController extends Controller
@@ -18,6 +20,23 @@ class UpdateController extends Controller
         $labelIds = $data['labels'];
 
         unset($data['purchases'], $data['labels']);
+
+        $status = OrderStatus::find($data['status_id']);
+        if ($status->id != $order->status_id) {
+            if ($status->write_off == 2) {
+                foreach ($order->purchases as $purchase) {
+                    $product = Product::find($purchase->product_id);
+                    $qty = $purchase->qty;
+                    $product->decreaseProductQuantity($qty);
+                }
+            } else if ($status->write_off == 3) {
+                foreach ($order->purchases as $purchase) {
+                    $product = Product::find($purchase->product_id);
+                    $qty = $purchase->qty;
+                    $product->decreaseProductQuantity(-$qty);
+                }
+            }
+        }
 
         $order->update($data);
 
@@ -33,7 +52,6 @@ class UpdateController extends Controller
 
         foreach ($currentPurchases as $purchase) {
             $purchase = (object)$purchase;
-            dump($purchase);
 
             Purchase::updateOrCreate([
                 'product_id' => $purchase->product_id,

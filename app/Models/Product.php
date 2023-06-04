@@ -58,4 +58,17 @@ class Product extends Model
     {
         return $this->belongsToMany(Product::class, 'purchases', 'product_id', 'order_id');
     }
+
+    public function decreaseProductQuantity($qty)
+    {
+        if ($this->qty >= $qty) {
+            $this->qty -= $qty;
+        } else {
+            $this->qty = 0;
+        }
+
+        $this->save();
+    }
+
+
 }

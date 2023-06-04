@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\StoreRequest;
 use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\Product;
 use App\Models\Purchase;
 
 class StoreController extends Controller
@@ -37,6 +39,16 @@ class StoreController extends Controller
                 'label_id' => $purchase->label_id ?? null,
             ]);
         }
+
+        $status = OrderStatus::find($order->status_id);
+        if ($status->write_off == 2) {
+            foreach ($order->purchases as $purchase) {
+                $product = Product::find($purchase->product_id);
+                $qty = $purchase->qty;
+                $product->decreaseProductQuantity($qty);
+            }
+        }
+
 
         return response([]);
     }
