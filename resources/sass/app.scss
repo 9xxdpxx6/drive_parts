@@ -1,0 +1,30 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Vue-select
+@import "vue-select/dist/vue-select.css";
+@import "custom-vue-select";
+
+//Datepicker
+@import "vue2-datepicker/scss/index.scss";
+@import "custom-datepicker";
+
+// Dropzone
+@import "dropzone";
+
+.thumb-color {
+    width: 80px;
+}
+
+@media (max-width: 767px) {
+    .thumb-color {
+        max-width: 50px;
+        min-width: 50px;
+    }
+}
