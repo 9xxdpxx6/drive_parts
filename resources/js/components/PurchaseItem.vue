@@ -189,8 +189,6 @@ export default {
     .td-input {
         max-width: none;
     }
-
-
 }
 
 </style>

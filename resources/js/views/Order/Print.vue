@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="controls container w-50">
+        <div class="controls container">
             <div class="row mb-5">
                 <div>
                     <button @click.prevent="print" class="btn btn-primary me-3">Печать</button>
@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <div class="container w-50 order-container">
+        <div class="container order-container">
             <div v-if="order" class="print-order">
                 <div class="row">
                     <div class="col-6">
@@ -22,7 +22,6 @@
                         </h5>
                     </div>
                     <div class="col-6">
-                        <!--                    <span>DRIVE PARTS Автозапчасти Консультация Подбор Доставка 350041, Краснодарский край, г.Краснодар, ул. Красная, дом № 176/1 8(999) 88-88-888</span>-->
                         <div>DRIVE PARTS</div>
                         <div>Автозапчасти. Консультация. Подбор. Доставка.</div>
                         <div>350041, Краснодарский край, г.Краснодар, ул. Красная, дом № 176/1</div>
@@ -223,6 +222,16 @@ export default {
 .warranty {
     text-align: justify;
     font-size: 10px;
+}
+
+.container {
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
 }
 
 @media print {

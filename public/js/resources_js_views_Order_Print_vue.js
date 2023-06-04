@@ -158,7 +158,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -348,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.warranty {\n    text-align: justify;\n    font-size: 10px;\n}\n@media print {\nheader,\n    aside,\n    .controls {\n        display: none;\n}\n.order-container {\n        width: 100% !important;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.warranty {\n    text-align: justify;\n    font-size: 10px;\n}\n.container {\n    width: 50%;\n}\n@media (max-width: 768px) {\n.container {\n        width: 100%;\n}\n}\n@media print {\nheader,\n    aside,\n    .controls {\n        display: none;\n}\n.order-container {\n        width: 100% !important;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -16422,7 +16421,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "controls container w-50" }, [
+    _c("div", { staticClass: "controls container" }, [
       _c("div", { staticClass: "row mb-5" }, [
         _c("div", [
           _c(
@@ -16456,7 +16455,7 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container w-50 order-container" }, [
+    _c("div", { staticClass: "container order-container" }, [
       _vm.order
         ? _c("div", { staticClass: "print-order" }, [
             _c("div", { staticClass: "row" }, [
